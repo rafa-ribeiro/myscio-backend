@@ -1,0 +1,45 @@
+
+Syngenta Digital
+
+Times do Protector:
+- Observations
+- Ops Insights
+- Europe
+- Scouting App
+
+Composição dos times:
+
+Observations:
+- Ana Pereira (Product Manager)
+- Bruno Santos (Software Engineer)
+- Carla Rodrigues (UX Designer)
+
+Services owned by Observations team:
+- Timeline
+- Pests Risk Analysis
+- DLQ Redriver
+
+Ops Insights:
+- Caio Gomes (Engineering Manager)
+- Gabriel Silva (Software Engineer)
+- Mariana Costa (Data Scientist)
+- Rafael Lima (DevOps Engineer)
+
+Services owned by Ops Insights team:
+- Alerts
+- Control Strategies
+- monitoring traps
+
+Europe:
+- Daniel Gomes (Senior Software Engineer)
+
+Services owned by Europe team:
+- Pests Diseases
+
+Scouting App:
+- Fernanda Alves (Product Owner)
+- Lucas Ferreira (Mobile Developer)
+- Sofia Martins (QA Engineer)
+
+Serviços owned by Scouting App team:
+- Scouting Mobile Application
