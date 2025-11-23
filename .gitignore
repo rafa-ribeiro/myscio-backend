@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.manifest
+*.spec
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.db-journal
+*.mypy_cache/
+*.cover
+.coverage
+htmlcov/
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+*.mo
+*.env
+.env*
+venv/
+.venv/
+ENV/
+env.bak/
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Dependency management
+uv.lock
+poetry.lock
+Pipfile.lock
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Security / Secrets
+*.pem
+*.key
+*.crt
+
+# Misc
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# FastAPI static files
+static/
+
+# ChromaDB persistence
+chroma_db/
+_data/
+
+# Resources
+resources/*.txt
+

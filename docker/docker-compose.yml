@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # O serviço principal: o servidor ChromaDB
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: chromadb_server
+
+    # Mapeia a porta 9001 local para a porta 8000 do container
+    ports:
+      - "9001:8000"
+
+    # Configuração de persistência:
+    # 1. Monta o volume 'chroma_data' (definido abaixo)
+    # 2. Mapeia o caminho interno do container onde o Chroma armazena os dados
+    volumes:
+      - chroma_data:/app/chroma/index
+
+    # Configurações de ambiente opcionais
+    environment:
+      # Garante que o servidor HTTP esteja acessível externamente
+      - CHROMA_SERVER_HOST=0.0.0.0
+      # Desabilita a telemetria anônima, se desejar (Recomendado para produção)
+      - ANONYMIZED_TELEMETRY=False
+
+    # Reinicia o serviço automaticamente se ele falhar
+    restart: always
+
+# Definição do volume nomeado
+volumes:
+  # Este volume armazenará todos os seus dados de embeddings e metadados.
+  # O Docker gerencia este volume fora da estrutura de arquivos do container.
+  chroma_data:
+    driver: local
