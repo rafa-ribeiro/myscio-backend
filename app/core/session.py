@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from jose import JWTError, jwt
@@ -12,7 +12,7 @@ SESSION_EXPIRE_DAYS = 1
 
 
 def create_session_token(user: User) -> str:
-    expire = datetime.utcnow() + timedelta(days=SESSION_EXPIRE_DAYS)
+    expire = datetime.now(timezone.utc) + timedelta(days=SESSION_EXPIRE_DAYS)
     to_encode = {
         "uid": user.uid,
         "email": user.email,
