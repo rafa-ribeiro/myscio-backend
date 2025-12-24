@@ -23,7 +23,7 @@ async def health():
 @router.get("/protected")
 def protected_route(user=Depends(verify_session_token)):
     return {
-        "message": "Você está autenticado",
+        "message": "You are authenticated",
         "uid": user.uid,
         "email": user.email,
     }
