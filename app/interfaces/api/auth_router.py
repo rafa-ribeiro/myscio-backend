@@ -31,6 +31,7 @@ async def login(login_data: LoginRequest, response: Response):
         key=SESSION_TOKEN_KEY,
         value=session_token,
         httponly=True,
+        path="/",
         secure=False,  # Set to True in production with HTTPS
         samesite="lax",
         max_age=3600 * 24  # 1 day
@@ -55,7 +56,7 @@ async def login(login_data: LoginRequest, response: Response):
     status_code=status.HTTP_200_OK,
     response_model=AuthResponse
 )
-async def verify(session_token: Optional[str] = Cookie(None)):
+async def verify(session_token: Optional[str] = Cookie(default=None, alias=SESSION_TOKEN_KEY)):
     if not session_token:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="No session token provided")
 
@@ -87,19 +88,15 @@ async def verify(session_token: Optional[str] = Cookie(None)):
     status_code=status.HTTP_200_OK,
 )
 async def logout(response: Response):
-    try:
-        response.delete_cookie(
-            key=SESSION_TOKEN_KEY,
-            path="/",
-            samesite="lax"
-        )
+    response.delete_cookie(
+        key=SESSION_TOKEN_KEY,
+        path="/",
+        samesite="lax"
+    )
 
-        logger.info("Logout successful - cookie deleted")
+    logger.info("Logout successful - cookie deleted")
 
-        return {
-            "success": True,
-            "message": "Logout successful"
-        }
-    except Exception as e:
-        logger.error(f"Error during logout: {e}")
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error")
+    return {
+        "success": True,
+        "message": "Logout successful"
+    }
