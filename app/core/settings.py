@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     env: str = environ.get("FASTAPI_ENV", "dev")
 
     GEMINI_API_KEY: str
+    FIREBASE_CREDENTIALS_PATH: str
+
+    SECRET_KEY: str
 
     CHROMA_HOST: str = "localhost"
     CHROMA_PORT: int = 9001

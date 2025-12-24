@@ -71,5 +71,6 @@ chroma_db/
 _data/
 
 # Resources
-resources/*.txt
+app/resources/*.txt
+app/resources/firebase/*
 

@@ -19,4 +19,7 @@ dependencies = [
     "langchain-google-genai==2.0.7",
     "dependency-injector>=4.48.2",
     "pypdf>=6.4.0",
+    "firebase-admin>=7.1.0",
+    "python-multipart>=0.0.20",
+    "python-jose[cryptography]>=3.5.0",
 ]
