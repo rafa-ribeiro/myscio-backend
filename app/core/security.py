@@ -20,7 +20,7 @@ def verify_firebase_token(token: str) -> User:
         decoded_token = auth.verify_id_token(token)
         return User(
             uid=decoded_token["uid"],
-            email=decoded_token["email"],
+            email=decoded_token.get("email"),
             name=decoded_token.get("name"),
             picture=decoded_token.get("picture"),
         )
