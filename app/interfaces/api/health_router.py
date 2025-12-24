@@ -20,8 +20,12 @@ async def health():
     return HealthResponse(message="It's running!")
 
 
-@router.get("/protected")
-def protected_route(user=Depends(verify_session_token)):
+@router.get(
+    path="/protected",
+    responses={status.HTTP_200_OK: {"description": "Protected route access - Only for authenticated users"}},
+    response_model=dict
+)
+def protected_route(user=Depends(verify_session_token)) -> dict:
     return {
         "message": "You are authenticated",
         "uid": user.uid,
