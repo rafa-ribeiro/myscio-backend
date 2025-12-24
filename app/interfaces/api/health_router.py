@@ -1,5 +1,7 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, Depends
 from pydantic import BaseModel
+
+from app.core.session import verify_session_token
 
 
 class HealthResponse(BaseModel):
@@ -16,3 +18,12 @@ router = APIRouter(prefix="/health", tags=["health-check"])
 )
 async def health():
     return HealthResponse(message="It's running!")
+
+
+@router.get("/protected")
+def protected_route(user=Depends(verify_session_token)):
+    return {
+        "message": "Você está autenticado",
+        "uid": user.uid,
+        "email": user.email,
+    }
